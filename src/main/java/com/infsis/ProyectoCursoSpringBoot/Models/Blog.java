@@ -1,11 +1,10 @@
 package com.infsis.ProyectoCursoSpringBoot.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Blog {
@@ -13,6 +12,14 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "blog")
+    private List<Article> articles;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @CreatedDate
     private LocalDateTime createdAt;
 
     public Blog() {

@@ -1,12 +1,11 @@
 package com.infsis.ProyectoCursoSpringBoot.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Article {
@@ -15,6 +14,14 @@ public class Article {
     private Integer id;
     private String title;
     private String reference;
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne()
+    @JoinColumn(name = "blog_id")
+    private Blog blog;
+    @CreatedDate
     private LocalDateTime createdAt;
 
     public Article() {

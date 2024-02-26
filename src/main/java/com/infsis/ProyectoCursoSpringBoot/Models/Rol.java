@@ -1,9 +1,8 @@
 package com.infsis.ProyectoCursoSpringBoot.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Rol {
@@ -12,6 +11,9 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
     public Rol(Integer id, String name) {
         this.id = id;
