@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
     private User DTOtoUser(UserDTO userDTO){
         User user = new User();
+        user.setId(userDTO.getId());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
 
