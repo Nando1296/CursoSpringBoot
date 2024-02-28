@@ -1,8 +1,15 @@
 package com.infsis.ProyectoCursoSpringBoot.DTOs;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class UserDTO {
     private Integer id;
+    @NotNull
+    @NotBlank
     private String name;
+    @Email
     private String email;
 
     public UserDTO(Integer id, String name, String email) {
